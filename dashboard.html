@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+{% include "includes/message.html" %}
+<h3>Dashboard</h3>
+<hr>
+<small>{{session["username"]}}'s projects</small>
+<br><br>
+<a class="btn btn-success" href= "/addproject">Add Project</a>
+{% if project %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Number</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Date</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+{% for Project in project  %}
+<tr>
+      <th scope="row">{{Project.id}}</th>
+      <td>{{Project.Title}}</td>
+      <td>{{Project.Author}}</td>
+      <td>{{Project.Date|safe}}</td>
+      <td><a class="btn btn-success" href="/edit/<string:id>" >Update</div></td>
+      <td><a class="btn btn-danger" href="/delete/<string:id>">Delete</div></td>
+      
+      
+    </tr>
+{% endfor %}
+    
+{% else %}
+<div class="alert alert-danger">You haven't had any project yet...</div>
+{% endif %}
+
+{% endblock body %}

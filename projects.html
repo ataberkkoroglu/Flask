@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if project %}
+
+<h4>{{project.Title}}</h4>
+<hr>
+<p> Author: {{project.Author}}</p>
+<hr>
+<p>Published Date: {{project.Date}}<p>
+<hr>
+<p>Content: {{project.Content|safe}}</p>
+{% else %}
+<div class="alert alert-warning">Project not Found</div>
+{% endif %}
+
+{% endblock body %}

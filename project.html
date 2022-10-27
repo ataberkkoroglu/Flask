@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+<h3>Projects</h3>
+<hr>
+{% if project %}
+ <form action="/project" method="POST" role="search">
+              <input  type="text" class="input-sm " name="keyword" placeholder="Ara">
+              <button type="submit" class="btn btn-info">Search</button>
+              <br><br>
+          </form>
+ <ul class="list-group">
+  {% for projects in project %}
+   <li class="list-group-item"><a href="project/{{projects.id}}">{{projects.Title}}</a></li>
+   {% endfor %}
+{% else %}
+<div class="btn btn-danger">There is No Such Project</div>
+{% endif %}
+
+{% endblock body %}
